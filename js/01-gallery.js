@@ -34,24 +34,25 @@ function onImageClick(event) {
 
   event.preventDefault();
 
-  const instance = basicLightbox.create(`
-  <img src="${event.target.dataset.source}" width="800" height="600">
-`);
+  const instance = basicLightbox.create(
+    `
+    <img src="${event.target.dataset.source}" width="800" height="600">
+  `,
+    {
+      onShow: () => {
+        document.addEventListener("keydown", onEscKeyPress);
+      },
+      onClose: () => {
+        document.removeEventListener("keydown", onEscKeyPress);
+      },
+    }
+  );
 
   instance.show();
-
-  document.addEventListener("keydown", onEscKeyPress);
 
   function onEscKeyPress(event) {
     if (event.code === "Escape") {
       instance.close();
-      document.removeEventListener("keydown", onEscKeyPress);
     }
   }
 }
-/* ===========================
-Не знаю – як Ви це перевіряєте?
-Я хоч і написав (і ніби все працює), але дивлюся в код і майже НІЧОГО НЕ РОЗУМІЮ.
-Мені здається вдруге я таке не напишу))
-Дякую Вам!
-*/
