@@ -26,19 +26,7 @@ function onImageClick(event) {
     return;
   }
 
-  // console.log(`Link = ${event.target.dataset.source}`);
-
   event.preventDefault();
-
-  //   const instance = basicLightbox.create(`
-  //   <img src="${event.target.dataset.source}" width="800" height="600">
-  // `);
-
-  //   instance.show();
-
-  // (function () {
-  //   var $gallery = new SimpleLightbox(".gallery a", {});
-  // })();
 
   var lightbox = new SimpleLightbox(".gallery a", {
     captions: true,
@@ -46,13 +34,15 @@ function onImageClick(event) {
     captionDelay: 250,
   });
 
+  lightbox.open();
+
   document.addEventListener("keydown", onEscKeyPress);
 
   function onEscKeyPress(event) {
-    // if (event.code === "Escape") {
-    //   instance.close();
-    //   document.removeEventListener("keydown", onEscKeyPress);
-    // }
+    if (event.code === "Escape") {
+      lightbox.close();
+      document.removeEventListener("keydown", onEscKeyPress);
+    }
   }
 }
 
