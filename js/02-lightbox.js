@@ -19,6 +19,14 @@ function createGalleryMarkup(items) {
     .join("");
 }
 
+var lightbox = new SimpleLightbox(".gallery a", {
+  captions: true,
+  captionsData: "alt",
+  captionDelay: 250,
+});
+
+/* === СТАРИЙ КОД ===
+
 galleryList.addEventListener("click", onImageClick);
 
 function onImageClick(event) {
@@ -35,15 +43,6 @@ function onImageClick(event) {
   });
 
   lightbox.open();
-
-  document.addEventListener("keydown", onEscKeyPress);
-
-  function onEscKeyPress(event) {
-    if (event.code === "Escape") {
-      lightbox.close();
-      document.removeEventListener("keydown", onEscKeyPress);
-    }
-  }
 }
-
+*/
 // console.log(galleryItems);
