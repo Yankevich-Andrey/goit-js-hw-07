@@ -39,10 +39,10 @@ function onImageClick(event) {
     <img src="${event.target.dataset.source}" width="800" height="600">
   `,
     {
-      onShow: () => {
+      onShow: (instance) => {
         document.addEventListener("keydown", onEscKeyPress);
       },
-      onClose: () => {
+      onClose: (instance) => {
         document.removeEventListener("keydown", onEscKeyPress);
       },
     }
